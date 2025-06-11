@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="icons/assets/wordmark.svg" alt="OFE Auto-fill Extension" width="300" />
+  <img src="icons/assets/wordmark.png" alt="OFE Auto-fill Extension" width="300" />
   
   <p><strong>🚀 Speed up your FEU Tech faculty evaluations with one click!</strong></p>
   <p>
@@ -73,6 +73,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ---
 
 <div align="center">
-  <p><strong>Made with ❤️ by <a href="https://www.angelomanalo.me/" target="_blank">Angelo Manalo</a> for FEU Tech students</strong></p>
+  <p><strong>Made with ❤️ for FEU Tech students</strong></p>
   <p>⭐ <a href="https://github.com/GeloCreativeStudio/ofe-auto-fill">Star us on GitHub</a> if this saves you time!</p>
 </div>
