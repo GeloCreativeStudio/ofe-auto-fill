@@ -217,7 +217,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         updateStatus('Error checking page status', 'not-ready');
         updateAutoFillButton('error', 'Error checking page');
         updateButtonStates(false, false);
-        console.error('Error during initial setup:', error);
     }
       // Load saved rating level
     try {
@@ -237,7 +236,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
         }
     } catch (error) {
-        console.log('Could not load saved rating level:', error);
     }      // Simplified dropdown functionality
     dropdownDisplay.addEventListener('click', (e) => {
         e.preventDefault();
@@ -290,7 +288,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                 // Save to storage
                 await chrome.storage.local.set({ defaultRating: currentRatingLevel });
             } catch (error) {
-                console.log('Could not update rating level:', error);
             }
         });
     });
@@ -343,7 +340,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                 updateAutoFillButton('error', response?.message || 'Failed to fill (no response)');
                 showBriefStatus('Failed to fill evaluation form', 2000, 'error');
             }        } catch (error) {
-            console.error('Error during autoFill:', error);
               if (error.message.includes('Receiving end does not exist')) {
                 updateAutoFillButton('refresh', 'Refresh page to use');
                 updateStatus('Connection lost', 'not-ready');
@@ -443,7 +439,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                 showBriefStatus('Failed to generate preview', 2000, 'error');
             }
         } catch (error) {
-            console.error('Error during preview:', error);
             
             // Reset button state on error
             const buttonContent = previewBtn.querySelector('.button-content');

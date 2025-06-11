@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "OFE Auto-fill",
   "version": "1.0",
-  "description": "Automatically fills Online Faculty Evaluation (OFE) forms with customizable ratings to save time and streamline the evaluation process.",
+  "description": "Auto-fills Online Faculty Evaluation (OFE) forms with custom ratings to save time and streamline the evaluation process.",
   "permissions": [
     "storage",
     "activeTab",

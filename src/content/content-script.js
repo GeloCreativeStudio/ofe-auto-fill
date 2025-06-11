@@ -54,8 +54,6 @@
             if (callback) callback(0);
             return Promise.resolve(0);
         }
-        
-        console.log(`Auto-fill started: ratingLevel=${ratingLevel}, forceRefill=${forceRefill}`);
     
         const selects = document.getElementsByTagName('select');
         const choicesToMatch = new Set(ratingOptions[ratingLevel].choices);
@@ -66,13 +64,10 @@
     
         return new Promise((resolve) => {
             if (selectArray.length === 0) {
-                console.log('No select elements found on the page');
                 if (callback) callback(0);
                 resolve(0);
                 return;
             }
-            
-            console.log(`Found ${selectArray.length} select elements`);
 
             selectArray.forEach((select, index) => {
                 setTimeout(() => {
@@ -83,10 +78,7 @@
                         select.value !== "Select Rating" && select.selectedIndex > 0) {
                         // Skip if already filled (only when not forcing refill)
                         skippedCount++;
-                        console.log(`Skipped select ${index}: already filled with "${select.value}"`);
                     } else {
-                        console.log(`Processing select ${index}: current value="${select.value}", forceRefill=${forceRefill}`);
-                        
                         for (const option of select.options) {
                             const optionText = option.text.trim().toUpperCase();
                             const optionValue = option.value.trim().toUpperCase(); // Also check value
@@ -96,7 +88,6 @@
                                 select.dispatchEvent(new Event('change', { bubbles: true }));
                                 matched = true;
                                 filledCount++;
-                                console.log(`Matched and selected option "${option.text}" for select ${index}`);
                                 break;
                             }
                         }
@@ -109,24 +100,20 @@
                                     select.dispatchEvent(new Event('change', { bubbles: true }));
                                     matched = true;
                                     filledCount++;
-                                    console.log(`Matched numeric "5" for select ${index}`);
                                     break;
                                 }
                             }
                         }
                         
                         if (!matched) {
-                            console.log(`No match found for select ${index}`);
                         }
                     }                    processedCount++;                    if (processedCount === selectArray.length) {
                         // All selects processed, now send the message
-                        console.log(`Auto-fill completed: filled=${filledCount}, skipped=${skippedCount}, total=${selectArray.length}`);
                         chrome.runtime.sendMessage({
                             action: 'evaluationCompleted',
                             count: filledCount,
                             ratingLevel: ratingOptions[ratingLevel].label
                         }).catch(error => {
-                            console.log('Failed to send completion message:', error);
                             // Continue execution even if notification fails
                         });
                         

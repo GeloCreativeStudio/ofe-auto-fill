@@ -18,7 +18,6 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
                 title: 'OFE Auto-fill',
                 message: `Successfully filled ${request.count} evaluation fields!`
             }).catch(error => {
-                console.log('Notification creation failed:', error);
                 // Silently fail - notification is not critical for extension functionality
             });
         }
