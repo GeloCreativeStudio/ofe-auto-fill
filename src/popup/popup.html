@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="popup.css">
+    <title>OFE Auto-fill</title>
+</head>
+<body>
+    <div id="popup-container">        <div class="header">
+            <div class="header-content">
+                <div class="brand-section">
+                    <div class="app-icon">
+                        <a href="https://github.com/GeloCreativeStudio/ofe-auto-fill" target="_blank" rel="noopener noreferrer">
+                            <img src="../../icons/assets/wordmark.svg" alt="OFE Auto-fill" class="wordmark-logo" />
+                        </a>
+                    </div>                    <div class="brand-info">
+                        <div class="github-star-prompt">
+                            <a href="https://github.com/GeloCreativeStudio/ofe-auto-fill" target="_blank" rel="noopener noreferrer" class="star-link">
+                                <i class="fas fa-star"></i>
+                                <span>Star us on GitHub!</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><div id="status" class="status-card">
+            <div class="status-icon">
+                <i class="fas fa-circle-notch fa-spin"></i>
+            </div>
+            <div class="status-content">
+                <span class="status-text">Checking page...</span>
+            </div>
+        </div>
+        
+        <button id="refreshBtn" class="refresh-button" style="display:none;">
+            <i class="fas fa-refresh"></i>
+            <span>Refresh</span>
+        </button>
+        
+        <div class="main-content">
+            <div class="rating-section">
+                <div class="section-header">
+                    <i class="fas fa-sliders-h"></i>
+                    <label for="ratingLevel">Choose Rating Level</label>
+                </div>                <div id="custom-dropdown" class="custom-dropdown">
+                    <div id="dropdown-display" class="dropdown-display">                        <span id="selected-option">
+                            <i class="fas fa-star rating-icon excellent"></i>
+                            <span class="rating-text">Excellent</span>
+                        </span>
+                        <i class="fas fa-chevron-down dropdown-arrow"></i>
+                    </div>
+                    <div id="dropdown-options" class="dropdown-options">
+                        <div class="dropdown-option" data-value="excellent">
+                            <i class="fas fa-star rating-icon excellent"></i>
+                            <span>Excellent</span>
+                        </div>
+                        <div class="dropdown-option" data-value="good">
+                            <i class="fas fa-thumbs-up rating-icon good"></i>
+                            <span>Good</span>
+                        </div>
+                        <div class="dropdown-option" data-value="average">
+                            <i class="fas fa-minus-circle rating-icon average"></i>
+                            <span>Average</span>
+                        </div>
+                        <div class="dropdown-option" data-value="belowAverage">
+                            <i class="fas fa-thumbs-down rating-icon below-average"></i>
+                            <span>Below Average</span>
+                        </div>
+                        <div class="dropdown-option" data-value="poor">
+                            <i class="fas fa-frown rating-icon poor"></i>
+                            <span>Poor</span>
+                        </div>
+                        <div class="dropdown-option" data-value="notApplicable">
+                            <i class="fas fa-times-circle rating-icon not-applicable"></i>
+                            <span>Not Applicable</span>
+                        </div>
+                    </div>
+                </div>
+            </div>            
+            <div class="info-section">
+                <div class="info-card">
+                    <div class="info-header">
+                        <i class="fas fa-info-circle"></i>
+                        <h4>Supported Rating Types</h4>
+                    </div>
+                    <div class="info-content">
+                        <div class="info-item">
+                            <i class="fas fa-hashtag"></i>
+                            <span>Numeric scales</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-star"></i>
+                            <span>Quality levels</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Agreement scales</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Performance levels</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="action-buttons">                <button id="autoFillBtn" class="primary-button" disabled>
+                    <div class="button-content">
+                        <i class="fas fa-rocket"></i>
+                        <span>Auto-Fill OFE</span>
+                    </div>
+                </button>
+                
+                <button id="previewBtn" class="secondary-button" disabled>
+                    <div class="button-content">
+                        <i class="fas fa-eye"></i>
+                        <span>Preview Selection</span>
+                    </div>
+                </button>
+            </div>
+        </div>        <div class="footer-info">
+            <div class="footer-content">
+                <i class="fas fa-info-circle"></i>
+                <p>Automatically fills OFE (Online Faculty Evaluation) forms with your selected rating. Ensure you're on the evaluation page before use.</p>
+            </div>
+        </div>
+        
+        <div class="developer-credit">
+            <p>Developed with <i class="fas fa-heart heart-icon"></i> by <a href="https://www.angelomanalo.me/" target="_blank" rel="noopener noreferrer" class="developer-link">Angelo Manalo</a></p>
+        </div>
+    </div>
+    <script src="popup.js"></script>
+</body>
+</html>
