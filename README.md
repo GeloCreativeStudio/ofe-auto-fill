@@ -1,12 +1,7 @@
 <div align="center">
-  <img src="icons/assets/wordmark.png" alt="OFE Auto-fill Extension" width="300" />
+  <img src="icons\assets\img\marquee-promo-tile.png" alt="OFE Auto-fill Extension" width="800" />
   
   <p><strong>🚀 Speed up your FEU Tech faculty evaluations with one click!</strong></p>
-  <p>
-    <img src="https://img.shields.io/badge/Chrome-Extension-078249?style=flat-square&logo=googlechrome" alt="Chrome Extension" />
-    <img src="https://img.shields.io/badge/Manifest-V3-fcbd14?style=flat-square" alt="Manifest V3" />
-    <img src="https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square" alt="MIT License" />
-  </p>
 </div>
 
 ## ✨ What It Does
@@ -17,6 +12,8 @@ Automatically fills **all** evaluation fields on `solar.feutech.edu.ph` with you
 - 🎯 **One-Click Fill** - Fill entire evaluation forms instantly
 - 👀 **Preview Mode** - See what will be selected before filling
 - ⚙️ **6 Rating Levels** - Excellent, Good, Average, Below Average, Poor, N/A
+
+
 
 ## 🚀 Quick Setup
 

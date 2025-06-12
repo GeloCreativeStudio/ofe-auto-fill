@@ -15,6 +15,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         if (chrome.notifications) {
             chrome.notifications.create({
                 type: 'basic',
+                iconUrl: 'icons/android-chrome-192x192.png',
                 title: 'OFE Auto-fill',
                 message: `Successfully filled ${request.count} evaluation fields!`
             }).catch(error => {
