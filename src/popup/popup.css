@@ -661,3 +661,24 @@ body {
     outline: 2px solid var(--primary-color);
     outline-offset: 2px;
 }
+
+/* Add to popup.css */
+.hidden {
+    display: none !important;
+}
+
+.visible-flex {
+    display: flex !important;
+}
+
+.dropdown-options.open {
+    display: block;
+}
+
+.dropdown-arrow.open {
+    transform: rotate(180deg);
+}
+
+.secondary-button.clicked {
+    transform: scale(0.95);
+}

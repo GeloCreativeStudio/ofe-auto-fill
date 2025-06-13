@@ -171,7 +171,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         
         // Always show refresh button for not-ready states (warning messages)
         if (pageRefreshBtn) {
-            pageRefreshBtn.style.display = (type === 'not-ready' || showRefresh) ? 'flex' : 'none';
+            if (type === 'not-ready' || showRefresh) {
+                pageRefreshBtn.classList.remove('hidden');
+                pageRefreshBtn.classList.add('visible-flex');
+            } else {
+                pageRefreshBtn.classList.remove('visible-flex');
+                pageRefreshBtn.classList.add('hidden');
+            }
         }
     }
       // Helper function to check if content script is available
@@ -236,24 +242,45 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
         }
     } catch (error) {
-    }      // Simplified dropdown functionality
+    }
+    // Set initial aria-selected state and aria-activedescendant
+    const initialSelectedValue = currentRatingLevel; // Use the already loaded currentRatingLevel
+    const initialSelectedOptionEl = document.getElementById(`option-${initialSelectedValue}`);
+    const dropdownOptionElements = dropdownOptions.querySelectorAll('.dropdown-option'); // Ensure this is defined here if not globally
+
+    if (initialSelectedOptionEl) {
+        initialSelectedOptionEl.setAttribute('aria-selected', 'true');
+        dropdownDisplay.setAttribute('aria-activedescendant', initialSelectedOptionEl.id);
+    }
+    dropdownOptionElements.forEach(opt => {
+        if (!initialSelectedOptionEl || opt.id !== initialSelectedOptionEl.id) { // check if initialSelectedOptionEl exists
+            opt.setAttribute('aria-selected', 'false');
+        }
+    });
+    // Simplified dropdown functionality
     dropdownDisplay.addEventListener('click', (e) => {
         e.preventDefault();
         isDropdownOpen = !isDropdownOpen;
+        dropdownDisplay.setAttribute('aria-expanded', isDropdownOpen.toString());
+        const arrow = dropdownDisplay.querySelector('.dropdown-arrow');
         
         if (isDropdownOpen) {
-            dropdownOptions.style.display = 'block';
+            dropdownOptions.classList.add('open');
+            if (arrow) arrow.classList.add('open');
         } else {
-            dropdownOptions.style.display = 'none';
+            dropdownOptions.classList.remove('open');
+            if (arrow) arrow.classList.remove('open');
         }
     });      // Close dropdown when clicking outside
     document.addEventListener('click', (e) => {
         if (!customDropdown.contains(e.target) && isDropdownOpen) {
             isDropdownOpen = false;
-            dropdownOptions.style.display = 'none';
+            dropdownDisplay.setAttribute('aria-expanded', 'false');
+            dropdownOptions.classList.remove('open');
+            const arrow = dropdownDisplay.querySelector('.dropdown-arrow');
+            if (arrow) arrow.classList.remove('open');
         }
     });// Simplified option selection
-    const dropdownOptionElements = dropdownOptions.querySelectorAll('.dropdown-option');
     dropdownOptionElements.forEach(option => {
         option.addEventListener('click', async (e) => {
             e.stopPropagation();
@@ -270,14 +297,19 @@ document.addEventListener('DOMContentLoaded', async () => {
                 ratingText.textContent = rating.text;
             }
             
+            // Update ARIA states
+            dropdownOptionElements.forEach(opt => opt.setAttribute('aria-selected', 'false'));
+            option.setAttribute('aria-selected', 'true');
+            dropdownDisplay.setAttribute('aria-activedescendant', option.id);
             // Update current rating level
             currentRatingLevel = value;
             
             // Close dropdown
             isDropdownOpen = false;
-            dropdownOptions.style.display = 'none';
+            dropdownOptions.classList.remove('open');
+            dropdownDisplay.setAttribute('aria-expanded', 'false');
             const arrow = dropdownDisplay.querySelector('.dropdown-arrow');
-            arrow.style.transform = 'rotate(0deg)';
+            if (arrow) arrow.classList.remove('open');
               // Reset auto-fill button when rating changes
             if (autoFillBtn.classList.contains('success') || autoFillBtn.classList.contains('error')) {
                 updateAutoFillButton('default', null, null, true);
@@ -369,9 +401,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
 
         // Add button animation
-        previewBtn.style.transform = 'scale(0.95)';
+        previewBtn.classList.add('clicked');
         setTimeout(() => {
-            previewBtn.style.transform = 'scale(1)';
+            previewBtn.classList.remove('clicked');
         }, 100);        // Ping content script again just before attempting to preview
         const isReady = await isContentScriptReady(currentTab.id);
         if (!isReady) {
@@ -455,9 +487,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && isDropdownOpen) {
             isDropdownOpen = false;
-            dropdownOptions.style.display = 'none';
+            dropdownOptions.classList.remove('open');
+            dropdownDisplay.setAttribute('aria-expanded', 'false');
             const arrow = dropdownDisplay.querySelector('.dropdown-arrow');
-            if (arrow) arrow.style.transform = 'rotate(0deg)';
+            if (arrow) arrow.classList.remove('open');
         }
         
         if (e.key === 'Enter' && document.activeElement === dropdownDisplay) {

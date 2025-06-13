@@ -45,36 +45,36 @@
             <div class="rating-section">
                 <div class="section-header">
                     <i class="fas fa-sliders-h"></i>
-                    <label for="ratingLevel">Choose Rating Level</label>
+                    <label for="ratingLevel" id="ratingLevelLabel">Choose Rating Level</label>
                 </div>                <div id="custom-dropdown" class="custom-dropdown">
-                    <div id="dropdown-display" class="dropdown-display">                        <span id="selected-option">
+                    <div id="dropdown-display" class="dropdown-display" role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="selected-option ratingLevelLabel">                        <span id="selected-option">
                             <i class="fas fa-star rating-icon excellent"></i>
                             <span class="rating-text">Excellent</span>
                         </span>
                         <i class="fas fa-chevron-down dropdown-arrow"></i>
                     </div>
-                    <div id="dropdown-options" class="dropdown-options">
-                        <div class="dropdown-option" data-value="excellent">
+                    <div id="dropdown-options" class="dropdown-options" role="listbox" aria-labelledby="ratingLevelLabel">
+                        <div class="dropdown-option" data-value="excellent" id="option-excellent" role="option" aria-selected="false">
                             <i class="fas fa-star rating-icon excellent"></i>
                             <span>Excellent</span>
                         </div>
-                        <div class="dropdown-option" data-value="good">
+                        <div class="dropdown-option" data-value="good" id="option-good" role="option" aria-selected="false">
                             <i class="fas fa-thumbs-up rating-icon good"></i>
                             <span>Good</span>
                         </div>
-                        <div class="dropdown-option" data-value="average">
+                        <div class="dropdown-option" data-value="average" id="option-average" role="option" aria-selected="false">
                             <i class="fas fa-minus-circle rating-icon average"></i>
                             <span>Average</span>
                         </div>
-                        <div class="dropdown-option" data-value="belowAverage">
+                        <div class="dropdown-option" data-value="belowAverage" id="option-belowAverage" role="option" aria-selected="false">
                             <i class="fas fa-thumbs-down rating-icon below-average"></i>
                             <span>Below Average</span>
                         </div>
-                        <div class="dropdown-option" data-value="poor">
+                        <div class="dropdown-option" data-value="poor" id="option-poor" role="option" aria-selected="false">
                             <i class="fas fa-frown rating-icon poor"></i>
                             <span>Poor</span>
                         </div>
-                        <div class="dropdown-option" data-value="notApplicable">
+                        <div class="dropdown-option" data-value="notApplicable" id="option-notApplicable" role="option" aria-selected="false">
                             <i class="fas fa-times-circle rating-icon not-applicable"></i>
                             <span>Not Applicable</span>
                         </div>
