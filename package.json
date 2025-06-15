@@ -1,0 +1,18 @@
+{
+  "name": "ofe-auto-fill-extension",
+  "version": "1.0.0",
+  "description": "Auto-fills Online Faculty Evaluation (OFE) forms with custom ratings",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "serve": "vite preview --port 3000"
+  },
+  "keywords": ["chrome-extension", "automation", "evaluation", "feu-tech"],
+  "author": "Angelo Manalo",
+  "license": "MIT",
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
+}
